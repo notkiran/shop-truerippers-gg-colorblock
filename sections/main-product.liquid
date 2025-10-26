@@ -456,7 +456,7 @@
                 </div>
               {%- when 'custom_fields' -%}
                 <div class="product-form__input" {{ block.shopify_attributes }}>
-                  <label class="form__label" for="custom-name-{{ section.id }}">Custom Name (Optional - Max 15 chars, Uppercase only)</label>
+                  <label class="form__label" for="custom-name-{{ section.id }}">Custom Name (Optional)</label>
                   <input
                     type="text"
                     id="custom-name-{{ section.id }}"
@@ -470,7 +470,9 @@
                     oninput="this.value = this.value.toUpperCase()"
                   >
 
-                  <label class="form__label" for="custom-number-{{ section.id }}">Custom Number (Optional - Max 3 digits)</label>
+                  <div style="margin-bottom: 1rem;"></div>
+
+                  <label class="form__label" for="custom-number-{{ section.id }}">Custom Number (Optional)</label>
                   <input
                     type="text"
                     id="custom-number-{{ section.id }}"
