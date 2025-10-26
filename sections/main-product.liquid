@@ -456,24 +456,32 @@
                 </div>
               {%- when 'custom_fields' -%}
                 <div class="product-form__input" {{ block.shopify_attributes }}>
-                  <label class="form__label" for="custom-name-{{ section.id }}">Custom Name (Optional)</label>
+                  <label class="form__label" for="custom-name-{{ section.id }}">Custom Name (Optional - Max 15 chars, Uppercase only)</label>
                   <input
                     type="text"
                     id="custom-name-{{ section.id }}"
                     name="properties[Custom Name]"
                     form="{{ product_form_id }}"
                     class="field__input"
-                    placeholder="Enter custom name"
+                    placeholder="ENTER CUSTOM NAME"
+                    maxlength="15"
+                    pattern="[A-Z]*"
+                    style="text-transform: uppercase;"
+                    oninput="this.value = this.value.toUpperCase()"
                   >
 
-                  <label class="form__label" for="custom-number-{{ section.id }}">Custom Number (Optional)</label>
+                  <label class="form__label" for="custom-number-{{ section.id }}">Custom Number (Optional - Max 3 digits)</label>
                   <input
                     type="text"
                     id="custom-number-{{ section.id }}"
                     name="properties[Custom Number]"
                     form="{{ product_form_id }}"
                     class="field__input"
-                    placeholder="Enter custom number"
+                    placeholder="123"
+                    maxlength="3"
+                    pattern="[0-9]*"
+                    inputmode="numeric"
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                   >
 
                   <style>
