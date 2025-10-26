@@ -456,72 +456,37 @@
                 </div>
               {%- when 'custom_fields' -%}
                 <div class="product-form__input" {{ block.shopify_attributes }}>
-                  <label class="form__label" for="custom-name-{{ section.id }}">Custom Name (Optional)</label>
-                  <input
-                    type="text"
-                    id="custom-name-{{ section.id }}"
-                    name="properties[Custom Name]"
-                    form="{{ product_form_id }}"
-                    class="field__input"
-                    placeholder="ENTER CUSTOM NAME"
-                    maxlength="15"
-                    pattern="[A-Z]*"
-                    style="text-transform: uppercase;"
-                    oninput="this.value = this.value.toUpperCase()"
-                  >
+                  <div class="field">
+                    <input
+                      type="text"
+                      id="custom-name-{{ section.id }}"
+                      name="properties[Custom Name]"
+                      form="{{ product_form_id }}"
+                      class="field__input"
+                      placeholder="ENTER CUSTOM NAME"
+                      maxlength="15"
+                      pattern="[A-Z]*"
+                      style="text-transform: uppercase;"
+                      oninput="this.value = this.value.toUpperCase()"
+                    >
+                    <label class="field__label" for="custom-name-{{ section.id }}">Custom Name (Optional)</label>
+                  </div>
 
-                  <div style="margin-bottom: 1rem;"></div>
-
-                  <label class="form__label" for="custom-number-{{ section.id }}">Custom Number (Optional)</label>
-                  <input
-                    type="text"
-                    id="custom-number-{{ section.id }}"
-                    name="properties[Custom Number]"
-                    form="{{ product_form_id }}"
-                    class="field__input"
-                    placeholder="123"
-                    maxlength="3"
-                    pattern="[0-9]*"
-                    inputmode="numeric"
-                    oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-                  >
-
-                  <style>
-                    /* Custom styles for field visibility using theme colors */
-                    .product-form__input .field__input {
-                      border: 1px solid rgba(var(--color-foreground), 0.3) !important;
-                      background-color: rgba(var(--color-foreground), 0.05) !important;
-                      padding: 1.2rem 1.5rem !important;
-                      text-align: left !important;
-                      text-indent: 0 !important;
-                      margin: 0 !important;
-                    }
-
-                    .product-form__input .field__input:focus {
-                      border-color: rgba(var(--color-foreground), 0.6) !important;
-                      box-shadow: 0 0 0 1px rgba(var(--color-foreground), 0.6) !important;
-                      outline: none !important;
-                    }
-
-                    .product-form__input .field__input::placeholder {
-                      opacity: 0.5;
-                      text-align: left !important;
-                    }
-
-                    .product-form__input .form__label {
-                      margin-bottom: 0.5rem;
-                      display: block;
-                    }
-
-                    /* Reset any conflicting styles */
-                    .product-form__input .field__input:-webkit-autofill,
-                    .product-form__input .field__input:-webkit-autofill:focus,
-                    .product-form__input .field__input:-webkit-autofill:hover {
-                      -webkit-text-fill-color: rgb(var(--color-foreground)) !important;
-                      -webkit-box-shadow: 0 0 0px 1000px rgba(var(--color-foreground), 0.05) inset !important;
-                      transition: background-color 5000s ease-in-out 0s !important;
-                    }
-                  </style>
+                  <div class="field">
+                    <input
+                      type="text"
+                      id="custom-number-{{ section.id }}"
+                      name="properties[Custom Number]"
+                      form="{{ product_form_id }}"
+                      class="field__input"
+                      placeholder="123"
+                      maxlength="3"
+                      pattern="[0-9]*"
+                      inputmode="numeric"
+                      oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                    >
+                    <label class="field__label" for="custom-number-{{ section.id }}">Custom Number (Optional)</label>
+                  </div>
                 </div>
               {%- when 'popup' -%}
                 <modal-opener
