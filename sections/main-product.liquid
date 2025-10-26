@@ -471,8 +471,10 @@
                     >
                     <label class="field__label" for="custom-name-{{ section.id }}">Custom Name (Optional)</label>
                   </div>
+                </div>
 
-                  <div class="field" style="margin-top: 2rem;">
+                <div class="product-form__input" {{ block.shopify_attributes }}>
+                  <div class="field">
                     <input
                       type="text"
                       id="custom-number-{{ section.id }}"
