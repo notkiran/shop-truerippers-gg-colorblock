@@ -97,6 +97,7 @@
         "text_fEPrgg",
         "buttons_UzjLXT"
       ],
+      "disabled": true,
       "name": "t:sections.image-banner.presets.name",
       "settings": {
         "image": "shopify://shop_images/Airbrush-Image-Enhancer-1761465718839.jpg",
