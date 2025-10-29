@@ -49,8 +49,15 @@
           "type": "quantity_selector",
           "settings": {}
         },
+        "tepo_product_options_product_app_block_QENgdK": {
+          "type": "shopify://apps/tepo-product-options/blocks/product-app-block/906ef57c-14e4-45d8-8b53-3ba7349d56a6",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
         "custom_fields_6gXndn": {
           "type": "custom_fields",
+          "disabled": true,
           "settings": {}
         },
         "buy_buttons": {
@@ -73,6 +80,7 @@
         "share",
         "variant_picker",
         "quantity_selector",
+        "tepo_product_options_product_app_block_QENgdK",
         "custom_fields_6gXndn",
         "buy_buttons",
         "description"
