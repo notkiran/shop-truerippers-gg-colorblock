@@ -4,25 +4,13 @@
   margin: 2rem 0;
 }
 
-.size-chart-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-  color: var(--text-color, #212121);
-  text-align: center;
-}
-
 .size-chart-container {
-  background: var(--background-color, #ffffff);
-  border-radius: 8px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 0;
 }
 
 /* Table Styles */
 .size-chart-table-wrapper {
   overflow-x: auto;
-  margin-bottom: 1.5rem;
 }
 
 .size-chart-table {
@@ -35,13 +23,13 @@
 .size-chart-table td {
   padding: 0.75rem 1rem;
   text-align: center;
-  border: 1px solid var(--border-color, #e5e5e5);
+  border: 1px solid rgba(var(--color-foreground), 0.08);
 }
 
 .size-chart-table th {
-  background-color: var(--accent-color, #f4f4f4);
+  background-color: rgba(var(--color-foreground), 0.03);
   font-weight: 600;
-  color: var(--text-color, #212121);
+  color: rgb(var(--color-foreground));
   text-transform: uppercase;
   font-size: 0.875rem;
   letter-spacing: 0.5px;
@@ -49,15 +37,15 @@
 
 .size-chart-table td {
   font-size: 0.875rem;
-  color: var(--text-color-light, #666666);
+  color: rgba(var(--color-foreground), 0.75);
 }
 
 .size-chart-table tbody tr:nth-child(even) {
-  background-color: var(--background-secondary, #fafafa);
+  background-color: rgba(var(--color-background), 0.5);
 }
 
 .size-chart-table tbody tr:hover {
-  background-color: var(--hover-color, #f0f0f0);
+  background-color: rgba(var(--color-foreground), 0.05);
   transition: background-color 0.2s ease;
 }
 
@@ -115,9 +103,9 @@
 .size-chart-notes {
   margin-top: 1.5rem;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--border-color, #e5e5e5);
+  border-top: 1px solid rgba(var(--color-foreground), 0.08);
   font-size: 0.875rem;
-  color: var(--text-color-light, #666666);
+  color: rgba(var(--color-foreground), 0.75);
 }
 
 .size-chart-notes p:last-child {
@@ -133,8 +121,8 @@
 .size-chart-image img {
   max-width: 100%;
   height: auto;
-  border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: var(--media-radius);
+  box-shadow: var(--media-shadow);
 }
 
 /* Responsive Design */
@@ -197,31 +185,7 @@
   }
 }
 
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .size-chart-container {
-    background: var(--background-color-dark, #1a1a1a);
-    color: var(--text-color-dark, #ffffff);
-  }
-
-  .size-chart-table th {
-    background-color: var(--accent-color-dark, #2a2a2a);
-    color: var(--text-color-dark, #ffffff);
-  }
-
-  .size-chart-table tbody tr:nth-child(even) {
-    background-color: var(--background-secondary-dark, #2a2a2a);
-  }
-
-  .size-item {
-    background: var(--background-secondary-dark, #2a2a2a);
-    border-color: var(--border-color-dark, #404040);
-  }
-
-  .size-chart-notes {
-    border-color: var(--border-color-dark, #404040);
-  }
-}
+/* No need for dark mode overrides - theme colors handle this automatically */
 
 /* Animation */
 @keyframes fadeIn {
