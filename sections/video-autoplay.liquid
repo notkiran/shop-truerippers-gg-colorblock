@@ -1,11 +1,28 @@
 {%- comment -%} Images: check image crop aspect ratio {%- endcomment -%}
-{%- if section.settings.image_crop == 'none' -%}
-  {%- assign image_crop_width = section.settings.aspect_ratio | split: ':' | first | times: 1000 -%}
-  {%- assign image_crop_height = section.settings.aspect_ratio | split: ':' | last | times: 1000 -%}
+{%- comment -%} Desktop height {%- endcomment -%}
+{%- if section.settings.desktop_height == 'none' -%}
+  {%- assign desktop_image_crop_width = section.settings.aspect_ratio | split: ':' | first | times: 1000 -%}
+  {%- assign desktop_image_crop_height = section.settings.aspect_ratio | split: ':' | last | times: 1000 -%}
 {%- else -%}
-  {%- assign image_crop_width = section.settings.image_crop | split: ':' | first | times: 1000 -%}
-  {%- assign image_crop_height = section.settings.image_crop | split: ':' | last | times: 1000 -%}
+  {%- assign desktop_image_crop_width = section.settings.desktop_height | split: ':' | first | times: 1000 -%}
+  {%- assign desktop_image_crop_height = section.settings.desktop_height | split: ':' | last | times: 1000 -%}
 {%- endif -%}
+
+{%- comment -%} Mobile height {%- endcomment -%}
+{%- if section.settings.mobile_height == 'same_as_desktop' -%}
+  {%- assign mobile_image_crop_width = desktop_image_crop_width -%}
+  {%- assign mobile_image_crop_height = desktop_image_crop_height -%}
+{%- elsif section.settings.mobile_height == 'none' -%}
+  {%- assign mobile_image_crop_width = section.settings.aspect_ratio | split: ':' | first | times: 1000 -%}
+  {%- assign mobile_image_crop_height = section.settings.aspect_ratio | split: ':' | last | times: 1000 -%}
+{%- else -%}
+  {%- assign mobile_image_crop_width = section.settings.mobile_height | split: ':' | first | times: 1000 -%}
+  {%- assign mobile_image_crop_height = section.settings.mobile_height | split: ':' | last | times: 1000 -%}
+{%- endif -%}
+
+{%- comment -%} Default to desktop values for initial load {%- endcomment -%}
+{%- assign image_crop_width = desktop_image_crop_width -%}
+{%- assign image_crop_height = desktop_image_crop_height -%}
 
 {% comment %} Images: responsive image widths {% endcomment %}
 {%- assign widths = '180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 1950, 2100, 2260, 2450, 2700, 3000, 3350, 3750, 4100' -%}
@@ -231,6 +248,19 @@ h6.wbs-pck__heading {
 
 .wbs-pck__image__wrapper > * {
   grid-area: 1 / 1 / 2 / 2;
+}
+
+.wbs-pck__svg-sizer--mobile {
+  display: none;
+}
+
+@media only screen and (max-width: 767px) {
+  .wbs-pck__svg-sizer--desktop {
+    display: none;
+  }
+  .wbs-pck__svg-sizer--mobile {
+    display: block;
+  }
 }
 
 .wbs-pck__image__wrapper img,
@@ -838,7 +868,10 @@ div.DP__widths * {
       <a class="wbs-pck__absolute-link" href="{{ section.settings.link }}">{{ section.settings.link.title }}</a>
     {% endif %}
     <div class="wbs-pck__image__wrapper wbs-pck__background-image">
-      <svg class="wbs-pck__svg-sizer" viewBox="0 0 {{ image_crop_width }} {{ image_crop_height }}"></svg>
+      <svg class="wbs-pck__svg-sizer wbs-pck__svg-sizer--desktop" viewBox="0 0 {{ desktop_image_crop_width }} {{ desktop_image_crop_height }}"></svg>
+      {%- if mobile_image_crop_width != desktop_image_crop_width or mobile_image_crop_height != desktop_image_crop_height -%}
+        <svg class="wbs-pck__svg-sizer wbs-pck__svg-sizer--mobile" viewBox="0 0 {{ mobile_image_crop_width }} {{ mobile_image_crop_height }}"></svg>
+      {%- endif -%}
       {%- assign video = section.settings.video -%}
       <video class="wbs-pck__background-video" width="{{ video.aspect_ratio | times: 100 }}" height="100" autoplay muted playsinline loading="lazy" {% if section.settings.loop %}loop{% endif %} poster="{{ video.preview_image | image_url: width: 2800 }}">
         {%- for source in video.sources -%}
@@ -3728,14 +3761,55 @@ div.DP__widths * {
       "default": true
     },
     {
+      "type": "header",
+      "content": "Desktop height"
+    },
+    {
       "type": "select",
-      "id": "image_crop",
-      "label": "Banner height",
+      "id": "desktop_height",
+      "label": "Desktop banner height",
       "default": "1200:600",
       "options": [
         {
           "label": "Defined aspect ratio (see below)",
           "value": "none"
+        },
+        {
+          "label": "Extra small",
+          "value": "1200:200"
+        },
+        {
+          "label": "Small",
+          "value": "1200:400"
+        },
+        {
+          "label": "Medium",
+          "value": "1200:600"
+        },
+        {
+          "label": "Large",
+          "value": "1200:800"
+        },
+        {
+          "label": "Extra large",
+          "value": "1200:1000"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Mobile height"
+    },
+    {
+      "type": "select",
+      "id": "mobile_height",
+      "label": "Mobile banner height",
+      "default": "1200:400",
+      "info": "Height for mobile devices (max-width: 767px)",
+      "options": [
+        {
+          "label": "Same as desktop",
+          "value": "same_as_desktop"
         },
         {
           "label": "Extra small",
@@ -3976,6 +4050,8 @@ div.DP__widths * {
     {
       "name": "Autoplay video",
       "settings": {
+        "desktop_height": "1200:600",
+        "mobile_height": "1200:400",
         "text_alignment": "center",
         "text_position": "center center"
       },
