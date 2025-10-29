@@ -1,142 +1,92 @@
 {%- comment -%}
-  Size Chart Snippet - Responsive and Customizable
+  Size Chart Snippet - Table Format Only
   Usage: {% render 'size-chart' %}
 {%- endcomment -%}
 
 <div class="size-chart-wrapper" id="size-chart-{{ section.id | default: 'default' }}">
-  {%- if section.settings.size_chart_title != blank -%}
-    <h3 class="size-chart-title">{{ section.settings.size_chart_title }}</h3>
+  {%- if section.settings.heading != blank -%}
+    <h3 class="size-chart-title">{{ section.settings.heading }}</h3>
   {%- else -%}
-    <h3 class="size-chart-title">{{ 'products.product.size_chart' | t }}</h3>
+    <h3 class="size-chart-title">Size Chart</h3>
   {%- endif -%}
 
   <div class="size-chart-container">
-    {%- if section.settings.size_chart_type == 'table' or section.settings.size_chart_type == blank -%}
-      <!-- Table Size Chart -->
-      <div class="size-chart-table-wrapper">
-        <table class="size-chart-table">
-          <thead>
-            <tr>
-              <th>{{ 'products.product.size' | t }}</th>
-              <th>{{ 'products.product.chest' | t }}</th>
-              <th>{{ 'products.product.waist' | t }}</th>
-              <th>{{ 'products.product.hips' | t }}</th>
-              <th>{{ 'products.product.length' | t }}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {%- if section.settings.size_chart_rows != blank -%}
-              {{ section.settings.size_chart_rows }}
-            {%- else -%}
-              <!-- Default size chart data -->
-              <tr>
-                <td>XS</td>
-                <td>32-34"</td>
-                <td>24-26"</td>
-                <td>34-36"</td>
-                <td>26"</td>
-              </tr>
+    <!-- Table Size Chart -->
+    <div class="size-chart-table-wrapper">
+      <table class="size-chart-table">
+        <thead>
+          <tr>
+            <th>SIZE</th>
+            <th>WIDTH</th>
+            <th>LENGTH</th>
+            <th>SLEEVE</th>
+            <th>FS HEIGHT</th>
+            <th>SHOULDER</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- if section.settings.size_s != blank or section.settings.size_m != blank or section.settings.size_l != blank or section.settings.size_xl != blank or section.settings.size_2xl != blank -%}
+            {%- if section.settings.size_s != blank -%}
               <tr>
                 <td>S</td>
-                <td>34-36"</td>
-                <td>26-28"</td>
-                <td>36-38"</td>
-                <td>27"</td>
-              </tr>
-              <tr>
-                <td>M</td>
-                <td>36-38"</td>
-                <td>28-30"</td>
-                <td>38-40"</td>
-                <td>28"</td>
-              </tr>
-              <tr>
-                <td>L</td>
-                <td>38-40"</td>
-                <td>30-32"</td>
-                <td>40-42"</td>
-                <td>29"</td>
-              </tr>
-              <tr>
-                <td>XL</td>
-                <td>40-42"</td>
-                <td>32-34"</td>
-                <td>42-44"</td>
-                <td>30"</td>
-              </tr>
-              <tr>
-                <td>XXL</td>
-                <td>42-44"</td>
-                <td>34-36"</td>
-                <td>44-46"</td>
-                <td>31"</td>
+                <td>{{ section.settings.size_s_width | default: '-' }}</td>
+                <td>{{ section.settings.size_s_length | default: '-' }}</td>
+                <td>{{ section.settings.size_s_sleeve | default: '-' }}</td>
+                <td>{{ section.settings.size_s_height | default: '-' }}</td>
+                <td>{{ section.settings.size_s_shoulder | default: '-' }}</td>
               </tr>
             {%- endif -%}
-          </tbody>
-        </table>
-      </div>
-
-    {%- elsif section.settings.size_chart_type == 'grid' -%}
-      <!-- Grid Size Chart -->
-      <div class="size-chart-grid">
-        {%- if section.settings.size_chart_grid_content != blank -%}
-          {{ section.settings.size_chart_grid_content }}
-        {%- else -%}
-          <!-- Default grid layout -->
-          <div class="size-category">
-            <h4>{{ 'products.product.tops' | t }}</h4>
-            <div class="size-grid">
-              <div class="size-item">
-                <span class="size-label">XS</span>
-                <span class="size-details">Chest: 32-34"</span>
-              </div>
-              <div class="size-item">
-                <span class="size-label">S</span>
-                <span class="size-details">Chest: 34-36"</span>
-              </div>
-              <div class="size-item">
-                <span class="size-label">M</span>
-                <span class="size-details">Chest: 36-38"</span>
-              </div>
-              <div class="size-item">
-                <span class="size-label">L</span>
-                <span class="size-details">Chest: 38-40"</span>
-              </div>
-              <div class="size-item">
-                <span class="size-label">XL</span>
-                <span class="size-details">Chest: 40-42"</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="size-category">
-            <h4>{{ 'products.product.bottoms' | t }}</h4>
-            <div class="size-grid">
-              <div class="size-item">
-                <span class="size-label">XS</span>
-                <span class="size-details">Waist: 24-26"</span>
-              </div>
-              <div class="size-item">
-                <span class="size-label">S</span>
-                <span class="size-details">Waist: 26-28"</span>
-              </div>
-              <div class="size-item">
-                <span class="size-label">M</span>
-                <span class="size-details">Waist: 28-30"</span>
-              </div>
-              <div class="size-item">
-                <span class="size-label">L</span>
-                <span class="size-details">Waist: 30-32"</span>
-              </div>
-              <div class="size-item">
-                <span class="size-label">XL</span>
-                <span class="size-details">Waist: 32-34"</span>
-              </div>
-            </div>
-          </div>
-        {%- endif -%}
-      </div>
-    {%- endif -%}
+            {%- if section.settings.size_m != blank -%}
+              <tr>
+                <td>M</td>
+                <td>{{ section.settings.size_m_width | default: '-' }}</td>
+                <td>{{ section.settings.size_m_length | default: '-' }}</td>
+                <td>{{ section.settings.size_m_sleeve | default: '-' }}</td>
+                <td>{{ section.settings.size_m_height | default: '-' }}</td>
+                <td>{{ section.settings.size_m_shoulder | default: '-' }}</td>
+              </tr>
+            {%- endif -%}
+            {%- if section.settings.size_l != blank -%}
+              <tr>
+                <td>L</td>
+                <td>{{ section.settings.size_l_width | default: '-' }}</td>
+                <td>{{ section.settings.size_l_length | default: '-' }}</td>
+                <td>{{ section.settings.size_l_sleeve | default: '-' }}</td>
+                <td>{{ section.settings.size_l_height | default: '-' }}</td>
+                <td>{{ section.settings.size_l_shoulder | default: '-' }}</td>
+              </tr>
+            {%- endif -%}
+            {%- if section.settings.size_xl != blank -%}
+              <tr>
+                <td>XL</td>
+                <td>{{ section.settings.size_xl_width | default: '-' }}</td>
+                <td>{{ section.settings.size_xl_length | default: '-' }}</td>
+                <td>{{ section.settings.size_xl_sleeve | default: '-' }}</td>
+                <td>{{ section.settings.size_xl_height | default: '-' }}</td>
+                <td>{{ section.settings.size_xl_shoulder | default: '-' }}</td>
+              </tr>
+            {%- endif -%}
+            {%- if section.settings.size_2xl != blank -%}
+              <tr>
+                <td>2XL</td>
+                <td>{{ section.settings.size_2xl_width | default: '-' }}</td>
+                <td>{{ section.settings.size_2xl_length | default: '-' }}</td>
+                <td>{{ section.settings.size_2xl_sleeve | default: '-' }}</td>
+                <td>{{ section.settings.size_2xl_height | default: '-' }}</td>
+                <td>{{ section.settings.size_2xl_shoulder | default: '-' }}</td>
+              </tr>
+            {%- endif -%}
+          {%- else -%}
+            <!-- Default size chart data - empty until filled -->
+            <tr>
+              <td colspan="6" style="text-align: center; padding: 2rem; color: #666;">
+                No size data available. Please add measurements in theme customizer.
+              </td>
+            </tr>
+          {%- endif -%}
+        </tbody>
+      </table>
+    </div>
 
     {%- if section.settings.size_chart_notes != blank -%}
       <div class="size-chart-notes rte">
@@ -152,7 +102,7 @@
           | image_tag:
             loading: 'lazy',
             widths: '400, 600, 800',
-            alt: section.settings.size_chart_title | default: 'Size Chart'
+            alt: section.settings.heading | default: 'Size Chart'
         }}
       </div>
     {%- endif -%}

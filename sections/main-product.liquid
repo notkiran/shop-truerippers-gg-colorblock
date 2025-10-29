@@ -1236,40 +1236,204 @@
           "label": "Heading"
         },
         {
-          "type": "select",
-          "id": "size_chart_type",
-          "options": [
-            {
-              "value": "table",
-              "label": "Table Format"
-            },
-            {
-              "value": "grid",
-              "label": "Grid Format"
-            }
-          ],
-          "default": "table",
-          "label": "Size Chart Format"
+          "type": "header",
+          "content": "Size S Measurements"
+        },
+        {
+          "type": "checkbox",
+          "id": "size_s",
+          "label": "Enable Size S",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "size_s_width",
+          "label": "Width (S)",
+          "placeholder": "e.g., 20\""
+        },
+        {
+          "type": "text",
+          "id": "size_s_length",
+          "label": "Length (S)",
+          "placeholder": "e.g., 28\""
+        },
+        {
+          "type": "text",
+          "id": "size_s_sleeve",
+          "label": "Sleeve (S)",
+          "placeholder": "e.g., 8\""
+        },
+        {
+          "type": "text",
+          "id": "size_s_height",
+          "label": "FS Height (S)",
+          "placeholder": "e.g., 27\""
+        },
+        {
+          "type": "text",
+          "id": "size_s_shoulder",
+          "label": "Shoulder (S)",
+          "placeholder": "e.g., 17\""
         },
         {
           "type": "header",
-          "content": "Table Content"
+          "content": "Size M Measurements"
         },
         {
-          "type": "html",
-          "id": "size_chart_rows",
-          "label": "Custom Table Rows (HTML)",
-          "info": "Use <tr><td>Size</td><td>Chest</td><td>Waist</td><td>Hips</td><td>Length</td></tr> format. Leave blank to use default data."
+          "type": "checkbox",
+          "id": "size_m",
+          "label": "Enable Size M",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "size_m_width",
+          "label": "Width (M)",
+          "placeholder": "e.g., 22\""
+        },
+        {
+          "type": "text",
+          "id": "size_m_length",
+          "label": "Length (M)",
+          "placeholder": "e.g., 29\""
+        },
+        {
+          "type": "text",
+          "id": "size_m_sleeve",
+          "label": "Sleeve (M)",
+          "placeholder": "e.g., 8.5\""
+        },
+        {
+          "type": "text",
+          "id": "size_m_height",
+          "label": "FS Height (M)",
+          "placeholder": "e.g., 28\""
+        },
+        {
+          "type": "text",
+          "id": "size_m_shoulder",
+          "label": "Shoulder (M)",
+          "placeholder": "e.g., 18\""
         },
         {
           "type": "header",
-          "content": "Grid Content"
+          "content": "Size L Measurements"
         },
         {
-          "type": "html",
-          "id": "size_chart_grid_content",
-          "label": "Custom Grid Content (HTML)",
-          "info": "Use HTML to create custom grid layout. Leave blank to use default layout."
+          "type": "checkbox",
+          "id": "size_l",
+          "label": "Enable Size L",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "size_l_width",
+          "label": "Width (L)",
+          "placeholder": "e.g., 24\""
+        },
+        {
+          "type": "text",
+          "id": "size_l_length",
+          "label": "Length (L)",
+          "placeholder": "e.g., 30\""
+        },
+        {
+          "type": "text",
+          "id": "size_l_sleeve",
+          "label": "Sleeve (L)",
+          "placeholder": "e.g., 9\""
+        },
+        {
+          "type": "text",
+          "id": "size_l_height",
+          "label": "FS Height (L)",
+          "placeholder": "e.g., 29\""
+        },
+        {
+          "type": "text",
+          "id": "size_l_shoulder",
+          "label": "Shoulder (L)",
+          "placeholder": "e.g., 19\""
+        },
+        {
+          "type": "header",
+          "content": "Size XL Measurements"
+        },
+        {
+          "type": "checkbox",
+          "id": "size_xl",
+          "label": "Enable Size XL",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "size_xl_width",
+          "label": "Width (XL)",
+          "placeholder": "e.g., 26\""
+        },
+        {
+          "type": "text",
+          "id": "size_xl_length",
+          "label": "Length (XL)",
+          "placeholder": "e.g., 31\""
+        },
+        {
+          "type": "text",
+          "id": "size_xl_sleeve",
+          "label": "Sleeve (XL)",
+          "placeholder": "e.g., 9.5\""
+        },
+        {
+          "type": "text",
+          "id": "size_xl_height",
+          "label": "FS Height (XL)",
+          "placeholder": "e.g., 30\""
+        },
+        {
+          "type": "text",
+          "id": "size_xl_shoulder",
+          "label": "Shoulder (XL)",
+          "placeholder": "e.g., 20\""
+        },
+        {
+          "type": "header",
+          "content": "Size 2XL Measurements"
+        },
+        {
+          "type": "checkbox",
+          "id": "size_2xl",
+          "label": "Enable Size 2XL",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "size_2xl_width",
+          "label": "Width (2XL)",
+          "placeholder": "e.g., 28\""
+        },
+        {
+          "type": "text",
+          "id": "size_2xl_length",
+          "label": "Length (2XL)",
+          "placeholder": "e.g., 32\""
+        },
+        {
+          "type": "text",
+          "id": "size_2xl_sleeve",
+          "label": "Sleeve (2XL)",
+          "placeholder": "e.g., 10\""
+        },
+        {
+          "type": "text",
+          "id": "size_2xl_height",
+          "label": "FS Height (2XL)",
+          "placeholder": "e.g., 31\""
+        },
+        {
+          "type": "text",
+          "id": "size_2xl_shoulder",
+          "label": "Shoulder (2XL)",
+          "placeholder": "e.g., 21\""
         },
         {
           "type": "header",
