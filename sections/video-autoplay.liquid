@@ -862,11 +862,20 @@ div.DP__widths * {
     {% endif %}
     <div class="wbs-pck__image__wrapper wbs-pck__background-image">
       <svg class="wbs-pck__svg-sizer" viewBox="0 0 {{ desktop_image_crop_width }} {{ desktop_image_crop_height }}"></svg>
+      <!-- DEBUG: Desktop: {{ desktop_image_crop_width }}x{{ desktop_image_crop_height }} -->
+      <!-- DEBUG: Mobile: {{ mobile_image_crop_width }}x{{ mobile_image_crop_height }} -->
+      <!-- DEBUG: Different: {% if mobile_image_crop_width != desktop_image_crop_width or mobile_image_crop_height != desktop_image_crop_height %}true{% else %}false{% endif %} -->
       {%- if mobile_image_crop_width != desktop_image_crop_width or mobile_image_crop_height != desktop_image_crop_height -%}
+        {%- assign mobile_aspect_ratio_calc = mobile_image_crop_width | append: '/' | append: mobile_image_crop_height -%}
         <style>
+          /* DEBUG: Applying mobile viewBox and aspect-ratio */
           @media only screen and (max-width: 767px) {
             #DP--{{ section.id }} .wbs-pck__svg-sizer {
-              viewBox: 0 0 {{ mobile_image_crop_width }} {{ mobile_image_crop_height }};
+              viewBox: 0 0 {{ mobile_image_crop_width }} {{ mobile_image_crop_height }} !important;
+              aspect-ratio: {{ mobile_aspect_ratio_calc }} !important;
+            }
+            #DP--{{ section.id }} .wbs-pck__background-image .wbs-pck__svg-sizer {
+              aspect-ratio: {{ mobile_aspect_ratio_calc }} !important;
             }
           }
         </style>
