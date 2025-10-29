@@ -40,7 +40,7 @@
       "settings": {
         "video": "shopify://files/videos/tr jersey final.mov",
         "loop": true,
-        "desktop_height": "1200:600",
+        "desktop_height": "1200:200",
         "mobile_height": "1200:800",
         "aspect_ratio": "16:9",
         "text_size": 100,
