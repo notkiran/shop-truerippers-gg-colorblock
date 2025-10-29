@@ -4,12 +4,6 @@
 {%- endcomment -%}
 
 <div class="size-chart-wrapper" id="size-chart-{{ section.id | default: 'default' }}">
-  {%- if section.settings.heading != blank -%}
-    <h3 class="size-chart-title">{{ section.settings.heading }}</h3>
-  {%- else -%}
-    <h3 class="size-chart-title">Size Chart</h3>
-  {%- endif -%}
-
   <div class="size-chart-container">
     <!-- Table Size Chart -->
     <div class="size-chart-table-wrapper">
