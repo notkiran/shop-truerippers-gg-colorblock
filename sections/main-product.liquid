@@ -227,6 +227,24 @@
                     </div>
                   </details>
                 </div>
+              {%- when 'size_chart' -%}
+                {{ 'size-chart.css' | asset_url | stylesheet_tag }}
+                <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
+                  <details id="Details-{{ block.id }}-{{ section.id }}">
+                    <summary>
+                      <div class="summary__title">
+                        {% render 'icon-accordion', icon: 'ruler' %}
+                        <h2 class="h4 accordion__title inline-richtext">
+                          {{ block.settings.heading | default: 'Size Chart' }}
+                        </h2>
+                      </div>
+                      {{- 'icon-caret.svg' | inline_asset_content -}}
+                    </summary>
+                    <div class="accordion__content" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
+                      {% render 'size-chart', section: block %}
+                    </div>
+                  </details>
+                </div>
               {%- when 'quantity_selector' -%}
                 <div
                   id="Quantity-Form-{{ section.id }}"
@@ -1203,6 +1221,71 @@
           "type": "page",
           "id": "page",
           "label": "t:sections.main-product.blocks.collapsible_tab.settings.page.label"
+        }
+      ]
+    },
+    {
+      "type": "size_chart",
+      "name": "Size Chart",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Size Chart",
+          "label": "Heading"
+        },
+        {
+          "type": "select",
+          "id": "size_chart_type",
+          "options": [
+            {
+              "value": "table",
+              "label": "Table Format"
+            },
+            {
+              "value": "grid",
+              "label": "Grid Format"
+            }
+          ],
+          "default": "table",
+          "label": "Size Chart Format"
+        },
+        {
+          "type": "header",
+          "content": "Table Content"
+        },
+        {
+          "type": "html",
+          "id": "size_chart_rows",
+          "label": "Custom Table Rows (HTML)",
+          "info": "Use <tr><td>Size</td><td>Chest</td><td>Waist</td><td>Hips</td><td>Length</td></tr> format. Leave blank to use default data."
+        },
+        {
+          "type": "header",
+          "content": "Grid Content"
+        },
+        {
+          "type": "html",
+          "id": "size_chart_grid_content",
+          "label": "Custom Grid Content (HTML)",
+          "info": "Use HTML to create custom grid layout. Leave blank to use default layout."
+        },
+        {
+          "type": "header",
+          "content": "Additional Content"
+        },
+        {
+          "type": "richtext",
+          "id": "size_chart_notes",
+          "label": "Size Chart Notes",
+          "info": "Add additional information like measuring instructions or fit tips"
+        },
+        {
+          "type": "image_picker",
+          "id": "size_chart_image",
+          "label": "Size Chart Image",
+          "info": "Optional: Add an image to supplement the size chart"
         }
       ]
     },
