@@ -250,17 +250,10 @@ h6.wbs-pck__heading {
   grid-area: 1 / 1 / 2 / 2;
 }
 
-.wbs-pck__svg-sizer--mobile {
-  display: none;
-}
-
-@media only screen and (max-width: 767px) {
-  .wbs-pck__svg-sizer--desktop {
-    display: none;
-  }
-  .wbs-pck__svg-sizer--mobile {
-    display: block;
-  }
+.wbs-pck__svg-sizer {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .wbs-pck__image__wrapper img,
@@ -868,9 +861,15 @@ div.DP__widths * {
       <a class="wbs-pck__absolute-link" href="{{ section.settings.link }}">{{ section.settings.link.title }}</a>
     {% endif %}
     <div class="wbs-pck__image__wrapper wbs-pck__background-image">
-      <svg class="wbs-pck__svg-sizer wbs-pck__svg-sizer--desktop" viewBox="0 0 {{ desktop_image_crop_width }} {{ desktop_image_crop_height }}"></svg>
+      <svg class="wbs-pck__svg-sizer" viewBox="0 0 {{ desktop_image_crop_width }} {{ desktop_image_crop_height }}"></svg>
       {%- if mobile_image_crop_width != desktop_image_crop_width or mobile_image_crop_height != desktop_image_crop_height -%}
-        <svg class="wbs-pck__svg-sizer wbs-pck__svg-sizer--mobile" viewBox="0 0 {{ mobile_image_crop_width }} {{ mobile_image_crop_height }}"></svg>
+        <style>
+          @media only screen and (max-width: 767px) {
+            #DP--{{ section.id }} .wbs-pck__svg-sizer {
+              viewBox: 0 0 {{ mobile_image_crop_width }} {{ mobile_image_crop_height }};
+            }
+          }
+        </style>
       {%- endif -%}
       {%- assign video = section.settings.video -%}
       <video class="wbs-pck__background-video" width="{{ video.aspect_ratio | times: 100 }}" height="100" autoplay muted playsinline loading="lazy" {% if section.settings.loop %}loop{% endif %} poster="{{ video.preview_image | image_url: width: 2800 }}">
