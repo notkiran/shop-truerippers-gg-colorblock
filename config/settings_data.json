@@ -125,7 +125,7 @@
     "currency_code_enabled": true,
     "cart_type": "notification",
     "show_vendor": false,
-    "show_cart_note": false,
+    "show_cart_note": true,
     "cart_drawer_collection": "",
     "cart_color_scheme": "scheme-1a6a2fd9-3284-451c-82c5-0c911855d723",
     "sections": {
