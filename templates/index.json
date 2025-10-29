@@ -40,7 +40,7 @@
       "settings": {
         "video": "shopify://files/videos/tr jersey final.mov",
         "loop": true,
-        "image_crop": "1200:800",
+        "image_crop": "1200:600",
         "aspect_ratio": "16:9",
         "text_size": 100,
         "text_alignment": "center",
